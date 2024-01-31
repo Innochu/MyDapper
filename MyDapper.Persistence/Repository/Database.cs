@@ -13,7 +13,7 @@ namespace MyDapper.Persistence.Repository
         }
         public void CreateDatabase(string dbName)
         {
-            var query = "SELECT * FROM CompanyEmployeeDapper WHERE name = @name";
+            var query = "SELECT * FROM  sys.databases WHERE name = @name";
             var parameters = new DynamicParameters();
             parameters.Add("name", dbName);
 

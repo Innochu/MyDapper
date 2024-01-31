@@ -1,7 +1,17 @@
+using MyDapper.Application.Extensions;
 using MyDapper.Persistence.DapperContextFolder;
 using MyDapper.Persistence.Repository;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+Log.Logger = new LoggerConfiguration()
+   .WriteTo.Console()
+   .WriteTo.File("Serilog/MyDapper_Log.txt", rollingInterval: RollingInterval.Minute)
+   .MinimumLevel.Information()
+   .CreateLogger();
 
 // Add services to the container.
 
@@ -26,5 +36,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MigrateDatabase();
 app.Run();

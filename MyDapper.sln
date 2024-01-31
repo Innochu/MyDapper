@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDapper.Persistence", "MyD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDapper.Domain", "MyDapper.Domain\MyDapper.Domain.csproj", "{B80F2AD1-1460-4797-93BD-76DCC71FE5CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDapper.Application", "MyDapper.Application\MyDapper.Application.csproj", "{84C9D142-66EC-44F5-95FE-75EBA3919599}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B80F2AD1-1460-4797-93BD-76DCC71FE5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B80F2AD1-1460-4797-93BD-76DCC71FE5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B80F2AD1-1460-4797-93BD-76DCC71FE5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C9D142-66EC-44F5-95FE-75EBA3919599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C9D142-66EC-44F5-95FE-75EBA3919599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C9D142-66EC-44F5-95FE-75EBA3919599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C9D142-66EC-44F5-95FE-75EBA3919599}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
