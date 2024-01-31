@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentMigrator.Runner;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyDapper.Persistence.Repository;
-
+using System.Reflection;
 
 namespace MyDapper.Application.Extensions
 {
@@ -13,10 +15,14 @@ namespace MyDapper.Application.Extensions
             using (var scope = app.Services.CreateScope())
             {
                 var databaseService = scope.ServiceProvider.GetRequiredService<Database>();
+                var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+
 
                 try
                 {
                     databaseService.CreateDatabase("CompanyEmployeeDapper");
+                    migrationService.ListMigrations();
+                    migrationService.MigrateUp();
                 }
                 catch (Exception ex)
                 {
@@ -28,4 +34,14 @@ namespace MyDapper.Application.Extensions
             }
         }
 
+        public static void ConfigureFluentMigrator(this IServiceCollection services, IConfiguration configuration)
+                                                     => services.AddLogging(c => c.AddFluentMigratorConsole())
+                                                        .AddFluentMigratorCore().ConfigureRunner(c => c.AddSqlServer2016()
+                                                        .WithGlobalConnectionString(configuration.GetConnectionString("sqlConnection"))
+                                                        .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations());
+
+
+
+
+    }
 }
