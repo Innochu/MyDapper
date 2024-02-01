@@ -2,7 +2,9 @@
 
 namespace MyDapper.Persistence.Migrations
 {
-    public class InitialTables_202206160001 : Migration
+ 
+[Migration(202402010221)]
+    public class InitialTables_202402010221 : Migration
     {
         public override void Down()
         {

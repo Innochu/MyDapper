@@ -2,6 +2,7 @@ using MyDapper.Application.Extensions;
 using MyDapper.Persistence.DapperContextFolder;
 using MyDapper.Persistence.Repository;
 using Serilog;
+using Serilog.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 

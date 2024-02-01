@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using MyDapper.Persistence.Migrations;
 using MyDapper.Persistence.Repository;
 using System.Reflection;
 
@@ -26,6 +26,8 @@ namespace MyDapper.Application.Extensions
                 }
                 catch (Exception ex)
                 {
+
+                  
                     // Handle the exception as needed, without logging
                     throw;
                 }
@@ -38,7 +40,8 @@ namespace MyDapper.Application.Extensions
                                                      => services.AddLogging(c => c.AddFluentMigratorConsole())
                                                         .AddFluentMigratorCore().ConfigureRunner(c => c.AddSqlServer2016()
                                                         .WithGlobalConnectionString(configuration.GetConnectionString("sqlConnection"))
-                                                        .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations());
+                                                        .ScanIn(typeof(InitialTables_202402010221).Assembly).For.Migrations());
+
 
 
 
