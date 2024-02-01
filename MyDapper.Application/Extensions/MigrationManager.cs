@@ -2,8 +2,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyDapper.Application.Service.Implementation;
+using MyDapper.Application.Service.Interface;
 using MyDapper.Persistence.Migrations;
 using MyDapper.Persistence.Repository;
+using MyDapper.Persistence.Repository.Interface;
+using MyDapper.Persistence.Repository.RepositoryManagerFolder;
 using System.Reflection;
 
 namespace MyDapper.Application.Extensions
@@ -45,6 +49,12 @@ namespace MyDapper.Application.Extensions
 
 
 
+        public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+                                                  services.AddScoped<IRepositoryManager, RepositoryManager>();
 
+        public static void ConfigureServiceManager(this IServiceCollection services) =>
+                                                  services.AddScoped<IServiceManager, ServiceManager>();
     }
+
+   
 }

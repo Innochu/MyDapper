@@ -23,6 +23,8 @@ builder.Services.AddSingleton<Database>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureFluentMigrator(builder.Configuration);
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
 
 var app = builder.Build();
 
