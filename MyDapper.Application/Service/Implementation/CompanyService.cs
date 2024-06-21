@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MyDapper.Application.Service.Interface;
+﻿using MyDapper.Application.Service.Interface;
 using MyDapper.Domain;
+using MyDapper.Domain.Dto;
 using MyDapper.Persistence.Repository.Interface;
 
 namespace MyDapper.Application.Service.Implementation
@@ -16,9 +16,21 @@ namespace MyDapper.Application.Service.Implementation
             // _logger = logger;
         }
 
+        public Task<Company> CreateCompany(CompanyForCreationDto company)
+        {
+            var createcompanies = _repository.Company.CreateCompany( company );
+            return createcompanies;
+        }
+
         public async Task<IEnumerable<Company>> GetAllCompanies()
         {
             var companies = await _repository.Company.GetAllCompanies();
+            return companies;
+        }
+
+        public async Task<IEnumerable<CompanywithEmployee>> GetCompaniesWithEmployees()
+        {
+            var companies = await _repository.Company.GetCompaniesWithEmployees();
             return companies;
         }
 
@@ -32,6 +44,8 @@ namespace MyDapper.Application.Service.Implementation
                 
             return companybyId;
         }
+
+       
     }
 
 }
